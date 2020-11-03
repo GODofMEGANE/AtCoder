@@ -1,12 +1,22 @@
-﻿#include <bits/stdc++.h>
+#include <bits/stdc++.h>
+#include <unistd.h>
+#include <atcoder/all>
+
 #if __has_include(<local.h>)
 #include <local.h>
-#include <unistd.h>
 #endif
+
 using namespace std;
+using namespace atcoder;
 
 typedef long long int LL;
 typedef long long int LLint;
+
+#ifdef LOCAL_H
+const bool LOCAL = true;
+#else
+const bool LOCAL = false;
+#endif
 
 //Faster Program
 #define endl "\n"
@@ -25,16 +35,16 @@ typedef long long int LLint;
 #define ALL(x) (x).begin(),(x).end()
 
 //As Function
-#define UP(a,b) ((a+(b-1))/b)
-#define IPOW(x,y) LL(pow(x,y))
+#define UP(a,b) ((a+(b-1))/(b))
+#define IPOW(x,y) (LL(pow(x,y)))
 
 //Debug
 #ifdef LOCAL_H
 #define TEST cout << "OK\n"
-#define LOG(a) cout << a << "\n"
+#define DEBUG(a) a
 #else
 #define TEST
-#define LOG(a)
+#define DEBUG(a)
 #endif
 
 #ifdef LOCAL_H
@@ -48,42 +58,48 @@ const int INF = int(999999999);
 #ifdef LOCAL_H
 [[maybe_unused]]
 #endif
+const LL LL_INF = LL(999999999999999999);
+#ifdef LOCAL_H
+[[maybe_unused]]
+#endif
 const long long MOD = int(1000000007);
+#ifdef LOCAL_H
+[[maybe_unused]]
+#endif
+const long long MOD_2 = int(998244353);
 
 //Settings
-#ifdef LOCAL_H
 const bool DO_BENCHMARK = true;
-#endif
-const int DOUBLE_ACCURACY = 15;
+const int DOUBLE_ACCURACY = 5;
+const int RUN_SOLVE = 1;
 
-#ifndef LOCAL_H
-    const bool DO_BENCHMARK = false;
-#endif
 
 int main(){
     cin.tie(nullptr);
     ios::sync_with_stdio(false);
     cout << fixed << setprecision(DOUBLE_ACCURACY);
-    void solve();
-    if(DO_BENCHMARK){
-        clock_t clock_start = clock();
-        solve();
-        clock_t clock_end = clock();
-        const double time = static_cast<double>(clock_end-clock_start)/CLOCKS_PER_SEC*1000.0;
-        cout << "\n" << time << "[ms]\n";
+    for(int do_solve_time = 0;do_solve_time < RUN_SOLVE;do_solve_time++){
+        void solve();
+        if(DO_BENCHMARK && LOCAL){
+            clock_t clock_start = clock();
+            solve();
+            clock_t clock_end = clock();
+            const double time = static_cast<double>(clock_end-clock_start)/CLOCKS_PER_SEC*1000.0;
+            cout << "\n------------------------------------\n" << time << "[ms]\n";
+        }
+        else solve();
     }
-    else solve();
 }
 
-/************************************************************************************************************************************************/
-
+/*------------------------------↓ここからコード↓----------------------------------*/
 void solve(){
-    for(int i = 0;i < 10000000;i++){
-        int count = min(i%100,100-i%100);
-        for(int j = 0;j < count;j++){
-            cout << "-";
-        }
-        cout << "FUCK!" << endl;
-        usleep(1);
+    int N;
+    cin >> N;
+    if(N%2==0){
+        cout << "White" << endl;
     }
+    else{
+        cout << "Black" << endl;
+    }
+    return;
 }
